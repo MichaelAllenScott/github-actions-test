@@ -17,7 +17,7 @@ jobs:
           npm install && npm run build
         working-directory: ./.github/actions/get-zenhub-data
 
-      - name: Build 'Get Zenhub Data' Action
+      - name: Run 'Get Zenhub Data' Action
         uses: ./.github/actions/get-zenhub-data/
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
