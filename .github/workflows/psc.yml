@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   # This workflow contains a single job called "build"
-  PSC Data Collection:
+  run-psc-data-collection:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
