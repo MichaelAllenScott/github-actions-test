@@ -2,26 +2,25 @@ name: Run PSC Report Data Collection
 on:
   workflow_dispatch:
 jobs:
-  build:
+  Collect:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-     - name: Setup Node
-       uses: actions/setup-node@v3
-       with:
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
           node-version: lts/*
 
-     - name: Build 'Get Zenhub Data' Action
-       run: |
+      - name: Build 'Get Zenhub Data' Action
+        run: |
           npm install && npm run build
-       working-directory: ./.github/actions/get-zenhub-data
+        working-directory: ./.github/actions/get-zenhub-data
 
-     - name: Build 'Get Zenhub Data' Action
-       uses: ./.github/actions/get-zenhub-data/
-       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build 'Get Zenhub Data' Action
+        uses: ./.github/actions/get-zenhub-data/
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Display Data Collected
