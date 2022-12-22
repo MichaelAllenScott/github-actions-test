@@ -2,8 +2,7 @@ name: Run PSC Report Data Collection
 on:
   workflow_dispatch:
 jobs:
-  # This workflow contains a single job called "build"
-  Build:
+  build:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
