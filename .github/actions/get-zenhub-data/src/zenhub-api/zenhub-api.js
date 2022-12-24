@@ -1,4 +1,4 @@
-require ('node-fetch');
+import fetch from 'node-fetch';
 
 const ZenhubApi = {
     async makeRequest(body) {
