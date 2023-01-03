@@ -30,7 +30,7 @@ export class ZenhubApi{
 
   async getStoriesAddedToBacklog() {
     const response = await this.makeRequest(ZenhubQueries.STORIES_ADDED_TO_BACKLOG);
-    const filteredIssues = ZenhubIssueUtility.filterIssuesForAssessmentDate(response.searchIssuesByPipeline.nodes, "createdAt");
+    const filteredIssues = ZenhubIssueUtility.filterIssuesForAssessmentDate(response.searchIssues.nodes, "createdAt");
     return filteredIssues;
   }
 

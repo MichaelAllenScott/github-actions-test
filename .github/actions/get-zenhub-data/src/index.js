@@ -9,7 +9,7 @@ import { ZenhubApi } from './zenhub-api/api';
 	  return;
 	}
 
-	const zenhubApi = new ZenhubApi('zh_75f22679c48cc395af6cc7620f50b9591f17a43032bb4d9b071b2083c4dfa92f');
+	const zenhubApi = new ZenhubApi(token);
 
 	const storiesAddedToBacklog = await zenhubApi.getStoriesAddedToBacklog();
 	console.log(`Stories Added to Backlog: ${storiesAddedToBacklog.length}`);
