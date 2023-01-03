@@ -1,10 +1,9 @@
 name: "Get Zenhub Data"
 description: "Retrieves all Zenhub data"
 inputs:
-  github_token:
-    description: "GitHub access token"
+  zenhub_token:
+    description: "Zenhub access token"
     required: true
-    default: ${{ github.token }}
 runs:
   using: node16
   main: "dist/index.js"

@@ -49,7 +49,7 @@ export const DEFECT_FIXES_RELEASED_TO_PRODUCTION = JSON.stringify({
 	`
 });
 
-export const STORY_LEAD_TIME = JSON.stringify({
+export const CLOSED_DEV_STORIES = JSON.stringify({
 	query: `
 	{
 		searchClosedIssues(
@@ -58,6 +58,7 @@ export const STORY_LEAD_TIME = JSON.stringify({
 		) {
 		  nodes {
 			title
+			createdAt
 			closedAt
 			timelineItems {
 				nodes {
@@ -73,7 +74,7 @@ export const STORY_LEAD_TIME = JSON.stringify({
 	`
 });
 
-export const DEFECT_LEAD_TIME = JSON.stringify({
+export const CLOSED_DEFECT_STORIES = JSON.stringify({
 	query: `
 	{
 		searchClosedIssues(
@@ -82,30 +83,7 @@ export const DEFECT_LEAD_TIME = JSON.stringify({
 		) {
 		  nodes {
 			title
-			closedAt
-			timelineItems {
-				nodes {
-					key
-					data
-					createdAt
-					updatedAt
-				}
-			}
-		  }
-		}
-	  }
-	`
-});
-
-export const OVERALL_LEAD_TIME = JSON.stringify({
-	query: `
-	{
-		searchClosedIssues(
-		  workspaceId: "5fc9453d958e1600153602d5"
-		  filters: {labels: {in: ["Bug"]}, {in: ["Dev Team"]}}
-		) {
-		  nodes {
-			title
+			createdAt
 			closedAt
 			timelineItems {
 				nodes {

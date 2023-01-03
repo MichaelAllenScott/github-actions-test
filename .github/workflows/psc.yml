@@ -20,8 +20,4 @@ jobs:
       - name: Run 'Get Zenhub Data' Action
         uses: ./.github/actions/get-zenhub-data/
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Runs a single command using the runners shell
-      - name: Display Data Collected
-        run: echo Hello, world!
+          zenhub_token: ${{ secrets.ZENHUB_TOKEN }}
