@@ -5,9 +5,14 @@ import { ZenhubApi } from './zenhub-api/api';
 	
 	const token = getInput( 'zenhub_token' );
 	if ( !token ) {
-	  setFailed( 'Input `zenhub_token` is required. This is the Zenhub API Key and needs to be saved as a secret in the repo.' );
+	  setFailed( '`ZENHUB_TOKEN` is required. This is the Zenhub API Key and needs to be saved as a secret in the repo.' );
 	  return;
 	}
+
+	const todayDate = new Date();
+	const startDate = new Date(todayDate.getFullYear(), todayDate.getMonth() - 1, 1);
+	const endDate = new Date(todayDate.getFullYear(), todayDate.getMonth(), 0);
+	console.log(`Running PSC Report for ${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}:`)
 
 	const zenhubApi = new ZenhubApi(token);
 

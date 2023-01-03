@@ -1,8 +1,8 @@
 const ZenhubIssueUtility = {
     filterIssuesForAssessmentDate(issueNodes, dateFieldToFilterOn) {
-        const endDate = new Date();
-        const startDate = new Date();
-        startDate.setMonth(startDate.getMonth() - 1);
+        const todayDate = new Date();
+        const startDate = new Date(todayDate.getFullYear(), todayDate.getMonth() - 1, 1);
+        const endDate = new Date(todayDate.getFullYear(), todayDate.getMonth(), 0);
     
         // Filter issues between current date and 1 month ago
         return issueNodes.filter(issue => {
@@ -11,9 +11,9 @@ const ZenhubIssueUtility = {
         });
     },
     
-    // Return the average lead time in days from array of issues with timelineItems included
+    // Return the average cycle time in days from array of issues with timelineItems included
     // Ex: Issue closedAt - last InProgress timelineItem date
-    calculateLeadTimeInDays(issues) {
+    calculateCycleTimeInDays(issues) {
         if (!issues || issues.length === 0) return 0;
     
         let totalIssueTime = 0;
@@ -43,7 +43,7 @@ const ZenhubIssueUtility = {
                 const timeDiff = issueClosedAtDate.getTime() - currLatestInProgDate.getTime();
                 const dayDiff = timeDiff / (1000 * 3600 * 24);
                 totalIssueTime += dayDiff;
-                //console.log(`Issue ${i} - '${issue.title}': ${dayDiff} days`);
+                //console.log(`'${issue.title}': ${dayDiff} days`);
             } else {
                 totalNumIssues--;
             }
@@ -55,9 +55,9 @@ const ZenhubIssueUtility = {
         return leadTime;
     },
     
-    // Return the average cycle time in days from array of issues
+    // Return the average lead time in days from array of issues
     // Ex: Issue closedAt - issue createdAt
-    calculateCycleTimeInDays(issues) {
+    calculateLeadTimeInDays(issues) {
         if (!issues || issues.length === 0) return 0;
     
         let totalIssueTime = 0;
@@ -68,7 +68,7 @@ const ZenhubIssueUtility = {
             const timeDiff = issueClosedAtDate.getTime() - issueCreatedAtDate.getTime();
             const dayDiff = timeDiff / (1000 * 3600 * 24);
             totalIssueTime += dayDiff;
-            //console.log(`Issue ${i} - '${issue.title}': ${dayDiff} days`);
+            //console.log(`'${issue.title}': ${dayDiff} days`);
         });
         
         let leadTime = totalIssueTime / issues.length;

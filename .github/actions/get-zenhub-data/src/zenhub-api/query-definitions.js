@@ -30,7 +30,7 @@ export const STORIES_RELEASED_TO_PRODUCTION = JSON.stringify({
 	{
 		searchClosedIssues(
 		  workspaceId: "5fc9453d958e1600153602d5"
-		  filters: {labels: {in: ["Dev Team"]}}
+		  filters: {labels: {in: ["Tech Task"]}}
 		) 
 		{
 			nodes {
@@ -64,7 +64,7 @@ export const CLOSED_DEV_STORIES = JSON.stringify({
 	{
 		searchClosedIssues(
 		  workspaceId: "5fc9453d958e1600153602d5"
-		  filters: {labels: {in: ["Dev Team"]}}
+		  filters: {labels: {in: ["Tech Task"]}}
 		) {
 		  nodes {
 			title
